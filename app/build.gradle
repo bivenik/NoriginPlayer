@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+
+def MOVIE_ID = 'MOVIE_ID'
+
+android {
+    signingConfigs {
+        debug {}
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        // Default build is bunny
+        applicationId "com.norigin"
+        applicationIdSuffix ".bigbuckbunny"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        resValue "string", "app_name", "Norigin BigBuckBunny"
+        buildConfigField 'String', MOVIE_ID, '"1"'
+        signingConfig signingConfigs.debug
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        bunny {
+            // No need to duplicate this
+            // applicationIdSuffix ".bigbuckbunny"
+            // resValue "string", "app_name", "Norigin BigBuckBunny"
+            // buildConfigField 'String', MOVIE_ID, '"1"'
+        }
+        elephants {
+            applicationIdSuffix ".elephants"
+            resValue "string", "app_name", "Norigin Elephants"
+            buildConfigField 'String', MOVIE_ID, '"3"'
+        }
+        sintel {
+            applicationIdSuffix ".sintel"
+            resValue "string", "app_name", "Norigin Sintel"
+            buildConfigField 'String', MOVIE_ID, '"2"'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.3.0'
+
+    // LoganSquare - JSON converter
+    apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
+    compile 'com.bluelinelabs:logansquare:1.1.0'
+
+    // compile 'com.google.android.exoplayer:exoplayer:r1.5.7'
+
+    // Reactive
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile project(path: ':library')
+}

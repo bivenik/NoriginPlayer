@@ -1,0 +1,53 @@
+<FrameLayout
+    android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:focusable="true"
+    android:keepScreenOn="true"
+    tools:context=".activity.HomeActivity">
+
+    <com.google.android.exoplayer.AspectRatioFrameLayout
+        android:id="@+id/video_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <SurfaceView
+            android:id="@+id/surface_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </com.google.android.exoplayer.AspectRatioFrameLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/background_alpha"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        tools:ignore="ContentDescription">
+
+        <ImageView
+            style="@style/NavigationImage"/>
+
+        <ImageView
+            style="@style/NavigationImage"/>
+
+        <ImageView
+            style="@style/NavigationImage"/>
+
+    </LinearLayout>
+
+</FrameLayout>
